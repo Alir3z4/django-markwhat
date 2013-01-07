@@ -23,8 +23,36 @@ returns a string representing the marked-up text. For example, the
 ``textile`` filter converts text that is marked-up in Textile format
 to HTML.
 
+Installation
+------------
+``django-markwhat`` is available on pypi:
+
+http://pypi.python.org/pypi/django-markwhat
+
+So easily install it by ``pip``:
+::
+    
+    pip install django-markwhat
+
+Or by ``easy_install``
+::
+    
+    $ easy_install django-markwhat
+
+Another way is by cloning ``django-markwhat``'s `git repo <https://github.com/Alir3z4/django-markwhat>`_ :::
+    
+    git clone git://github.com/Alir3z4/django-markwhat.git
+
+Then install it by running:
+::
+    
+    $ python setup.py install
+
+Configuration
+******************
+
 To activate these filters, add ``'django_markwhat'`` to your
-`INSTALLED_APPS` setting. Once you've done that, use
+``INSTALLED_APPS`` setting. Once you've done that, use
 ``{% load markup %}`` in a template, and you'll have access to these filters.
 
 .. warning::
@@ -66,10 +94,12 @@ Markdown
 The Python Markdown library supports options named "safe_mode" and
 "enable_attributes". Both relate to the security of the output. To enable both
 options in tandem, the markdown filter supports the "safe" argument.
-
-    {{ markdown_content_var|markdown:"safe" }}
+::
+    
+    { markdown_content_var|markdown:"safe" }}
 
 .. warning::
 
     Versions of the Python-Markdown library prior to 2.1 do not support the
     optional disabling of attributes and by default
+
