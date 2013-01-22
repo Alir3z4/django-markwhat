@@ -3,4 +3,5 @@
 ----
 
 * Added ChangeLog.rst
-* Fixed #2: Removing backward compatibility, From markup.py
+* Fixed #2: Removing backward compatibility, From markup.py.
+* Fixed #1: Re-Indention and Re-Style the code regards to pep8.

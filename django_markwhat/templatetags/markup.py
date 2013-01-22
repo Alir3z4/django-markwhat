@@ -1,5 +1,6 @@
 """
-Set of "markup" template filters for Django.  These filters transform plain text
+Set of "markup" template filters for Django.
+These filters transform plain text
 markup syntaxes to HTML; currently there is support for:
 
     * Textile, which requires the PyTextile library available at
@@ -28,7 +29,9 @@ def textile(value):
     """
     import textile
 
-    return mark_safe(force_unicode(textile.textile(smart_str(value), encoding='utf-8', output='utf-8')))
+    return mark_safe(force_unicode(
+        textile.textile(smart_str(value), encoding='utf-8', output='utf-8'))
+    )
 
 @register.filter(is_safe=True)
 def markdown(value, args=''):
@@ -61,9 +64,17 @@ def markdown(value, args=''):
         safe_mode = False
 
     if safe_mode:
-        return mark_safe(markdown.markdown(force_unicode(value), extensions, safe_mode=safe_mode, enable_attributes=False))
+        return mark_safe(markdown.markdown(
+            force_unicode(value),
+            extensions,
+            safe_mode=safe_mode,
+            enable_attributes=False
+        ))
     else:
-        return mark_safe(markdown.markdown(force_unicode(value), extensions, safe_mode=safe_mode))
+        return mark_safe(markdown.markdown(
+            force_unicode(value),
+            extensions,safe_mode=safe_mode
+        ))
 
 @register.filter(is_safe=True)
 def restructuredtext(value):
@@ -73,6 +84,14 @@ def restructuredtext(value):
     """
     from docutils.core import publish_parts
 
-    docutils_settings = getattr(settings, "RESTRUCTUREDTEXT_FILTER_SETTINGS", {})
-    parts = publish_parts(source=smart_str(value), writer_name="html4css1", settings_overrides=docutils_settings)
+    docutils_settings = getattr(
+        settings,
+        "RESTRUCTUREDTEXT_FILTER_SETTINGS",
+        {}
+    )
+    parts = publish_parts(
+        source=smart_str(value),
+        writer_name="html4css1",
+        settings_overrides=docutils_settings
+    )
     return mark_safe(force_unicode(parts["fragment"]))
