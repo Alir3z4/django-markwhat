@@ -24,7 +24,7 @@ register = template.Library()
 def textile(value):
 
 @register.filter(is_safe=True)
-def markdown(value, arg=''):
+def markdown(value, args=''):
     """
     Runs Markdown over a given value, optionally using various
     extensions python-markdown supports.
