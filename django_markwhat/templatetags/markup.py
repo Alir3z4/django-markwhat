@@ -64,22 +64,17 @@ def markdown(value, args=''):
         safe_mode = False
 
     if safe_mode:
-        return mark_safe(
-            markdown.markdown(
-                force_unicode(value),
-                extensions,
-                safe_mode=safe_mode,
-                enable_attributes=False
-            )
-        )
+        return mark_safe(markdown.markdown(
+            force_unicode(value),
+            extensions,
+            safe_mode=safe_mode,
+            enable_attributes=False
+        ))
     else:
-        return mark_safe(
-            markdown.markdown(
-                force_unicode(value),
-                extensions,
-                safe_mode=safe_mode
-            )
-        )
+        return mark_safe(markdown.markdown(
+            force_unicode(value),
+            extensions,safe_mode=safe_mode
+        ))
 
 @register.filter(is_safe=True)
 def restructuredtext(value):
