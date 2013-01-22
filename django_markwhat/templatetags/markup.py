@@ -22,14 +22,6 @@ register = template.Library()
 
 @register.filter(is_safe=True)
 def textile(value):
-    try:
-        import textile
-    except ImportError:
-        if settings.DEBUG:
-            raise template.TemplateSyntaxError("Error in 'textile' filter: The Python textile library isn't installed.")
-        return force_unicode(value)
-    else:
-        return mark_safe(force_unicode(textile.textile(smart_str(value), encoding='utf-8', output='utf-8')))
 
 @register.filter(is_safe=True)
 def markdown(value, arg=''):
@@ -49,12 +41,6 @@ def markdown(value, arg=''):
     they will be silently ignored.
 
     """
-    try:
-        import markdown
-    except ImportError:
-        if settings.DEBUG:
-            raise template.TemplateSyntaxError("Error in 'markdown' filter: The Python markdown library isn't installed.")
-        return force_unicode(value)
     else:
         # markdown.version was first added in 1.6b. The only version of markdown
         # to fully support extensions before 1.6b was the shortlived 1.6a.
@@ -88,13 +74,6 @@ def markdown(value, arg=''):
 
 @register.filter(is_safe=True)
 def restructuredtext(value):
-    try:
-        from docutils.core import publish_parts
-    except ImportError:
-        if settings.DEBUG:
-            raise template.TemplateSyntaxError("Error in 'restructuredtext' filter: The Python docutils library isn't installed.")
-        return force_unicode(value)
-    else:
         docutils_settings = getattr(settings, "RESTRUCTUREDTEXT_FILTER_SETTINGS", {})
         parts = publish_parts(source=smart_str(value), writer_name="html4css1", settings_overrides=docutils_settings)
         return mark_safe(force_unicode(parts["fragment"]))
