@@ -3,3 +3,4 @@
 ----
 
 * Added ChangeLog.rst
+* Fixed #2: Removing backward compatibility, From markup.py
