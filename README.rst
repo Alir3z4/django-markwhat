@@ -7,6 +7,8 @@ Django MarkWhat
    :target: https://travis-ci.org/Alir3z4/django-markwhat
 
 
+.. contents:: Table of contents
+
 .. note::
 
     Extracted from `Django 1.4 since markup deprecation <https://docs.djangoproject.com/en/dev/releases/1.5/#django-contrib-markup>`_
