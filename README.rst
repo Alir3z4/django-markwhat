@@ -2,6 +2,11 @@
 Django MarkWhat
 =====================
 
+.. image:: https://travis-ci.org/Alir3z4/django-markwhat.png
+   :alt: travis-cli tests status for django-markwhat
+   :target: https://travis-ci.org/Alir3z4/django-markwhat
+
+
 .. note::
 
     Extracted from `Django 1.4 since markup deprecation <https://docs.djangoproject.com/en/dev/releases/1.5/#django-contrib-markup>`_
