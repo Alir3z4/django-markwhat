@@ -82,6 +82,13 @@ Paragraph 2 with a link_
             {'markdown_content':markdown_content})).strip()
         self.assertFalse('@' in rendered)
 
+    def test_markdown_default_extensions(self):
+        t = Template("{% load markup %}{{ markdown_content|markdown }}")
+        markdown_content = "<script>Biily Jean"
+        rendered = t.render(Context(
+            {'markdown_content': markdown_content})).strip()
+        self.assertFalse('<script>' in rendered)
+
     @unittest.skipIf(markdown, 'markdown is installed')
     def test_no_markdown(self):
         t = Template("{% load markup %}{{ markdown_content|markdown }}")

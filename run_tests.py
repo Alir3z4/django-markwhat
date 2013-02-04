@@ -27,7 +27,10 @@ settings.configure(
         'django.contrib.sessions',
         'django.contrib.admin',
         'django_markwhat'
-    )
+    ),
+    DEFAULT_MARKWHAT_EXTENSIONS=[
+        "safe",
+    ],
 )
 
 from django.test.simple import DjangoTestSuiteRunner

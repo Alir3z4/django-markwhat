@@ -12,8 +12,6 @@ markup syntaxes to HTML; currently there is support for:
     * reStructuredText, which requires docutils from http://docutils.sf.net/
 """
 
-import warnings
-
 from django import template
 from django.conf import settings
 from django.utils.encoding import smart_str, force_unicode
@@ -57,6 +55,11 @@ def markdown(value, args=''):
     import markdown
 
     extensions = [e for e in args.split(',') if e]
+
+    if getattr(settings, "DEFAULT_MARKWHAT_EXTENSIONS", None):
+        extensions += settings.DEFAULT_MARKWHAT_EXTENSIONS
+        extensions = list(set(extensions))
+
     if len(extensions) > 0 and extensions[0] == "safe":
         extensions = extensions[1:]
         safe_mode = True
