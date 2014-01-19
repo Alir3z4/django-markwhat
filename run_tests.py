@@ -31,7 +31,7 @@ settings.configure(
 )
 
 from django.test.simple import DjangoTestSuiteRunner
-test_runner = DjangoTestSuiteRunner(verbosity=1)
+test_runner = DjangoTestSuiteRunner(verbosity=2)
 failures = test_runner.run_tests(['django_markwhat', ])
 if failures:
     sys.exit(failures)
