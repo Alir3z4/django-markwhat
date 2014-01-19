@@ -12,8 +12,6 @@ markup syntaxes to HTML; currently there is support for:
     * reStructuredText, which requires docutils from http://docutils.sf.net/
 """
 
-import warnings
-
 from django import template
 from django.conf import settings
 from django.utils.encoding import smart_str, force_unicode
