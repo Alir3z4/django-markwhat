@@ -122,3 +122,13 @@ options in tandem, the markdown filter supports the "safe" argument.
     Versions of the Python-Markdown library prior to 2.1 do not support the
     optional disabling of attributes and by default
 
+Tests
+-----
+
+``django-markwhat`` is tested on both `python2` and `python3`, to run the tests:
+
+::
+
+    $ tox
+
+
