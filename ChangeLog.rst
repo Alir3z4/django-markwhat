@@ -5,6 +5,11 @@
 * Fix #9: Django package name typo.
 * Feature: Add `AUTHORS.rst`` file.
 * Feature: Reorganized ``requirements``.
+* Feature: Runnning tests with ``tox``.
+* Feature: Add support for ``Python3`` and ``PyPy``.
+* Feature: Add ``wheel`` package support.
+* Feature: Change version numbering to date based.
+* Feature: Update ``Python-Markdown``, ``textile`` and ``docutils`` parser modules to latest.
 
 
 1.1 2014-01-19
