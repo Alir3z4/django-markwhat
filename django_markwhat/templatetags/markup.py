@@ -22,8 +22,9 @@ register = template.Library()
 @register.filter(is_safe=True)
 def textile(value):
     """
-    textile(is_safe=True)
-    =====================
+    :type value: str
+
+    :rtype: str
     """
     import textile
 
@@ -34,9 +35,6 @@ def textile(value):
 @register.filter(is_safe=True)
 def markdown(value, args=''):
     """
-    markdown(value, args='')
-    ========================
-
     Runs Markdown over a given value, optionally using various
     extensions python-markdown supports.
 
@@ -51,6 +49,10 @@ def markdown(value, args=''):
     If the version of Markdown in use does not support extensions,
     they will be silently ignored.
 
+    :type value: str
+    :type args: str
+
+    :rtype: str
     """
     import markdown
 
@@ -71,8 +73,8 @@ def markdown(value, args=''):
 @register.filter(is_safe=True)
 def restructuredtext(value):
     """
-    restructuredtext(value)
-    =======================
+    :type value: str
+    :rtype: str
     """
     from docutils.core import publish_parts
 
