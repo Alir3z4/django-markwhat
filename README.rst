@@ -30,6 +30,18 @@ returns a string representing the marked-up text. For example, the
 ``textile`` filter converts text that is marked-up in Textile format
 to HTML.
 
+
+Supported Python versions
+=========================
+
+``django-crequest`` currently can be run on multiple python versions:
+
+* Python 2 (2.7)
+* Python 3 (3.2, 3.3, 3.4)
+* PyPy
+
+
+
 Installation
 ------------
 ``django-markwhat`` is available on pypi:
