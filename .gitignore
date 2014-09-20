@@ -1,5 +1,6 @@
 # IDE specific
 .idea/
+.ropeproject/
 # file
 *.pyc
 manage.py
