@@ -8,8 +8,9 @@ setup(
     license=open('LICENSE').read(),
     author='Alireza Savand',
     author_email='alireza.savand@gmail.com',
-    install_requires=['Django',],
-    description='A collection of template filters that implement common markup languages.',
+    install_requires=['Django', ],
+    description="""A collection of template filters that implement
+     common markup languages.""",
     long_description=open('README.rst').read(),
     keywords=[
         'django',
