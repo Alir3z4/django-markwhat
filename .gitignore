@@ -6,6 +6,7 @@
 manage.py
 dump.json
 MANIFEST
+.coverage
 # dir
 build/
 dist/
