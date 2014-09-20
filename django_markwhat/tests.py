@@ -99,7 +99,7 @@ Paragraph 2 with a link_
             # Docutils v0.4 and earlier
             self.assertEqual(rendered, """<p>Paragraph 1</p>
 <p>Paragraph 2 with a <a class="reference" href="http://www.example.com/">link</a></p>""")
-        except AssertionError, e:
+        except AssertionError as exc:
             # Docutils from SVN (which will become 0.5)
             self.assertEqual(rendered, """<p>Paragraph 1</p>
 <p>Paragraph 2 with a <a class="reference external" href="http://www.example.com/">link</a></p>""")
