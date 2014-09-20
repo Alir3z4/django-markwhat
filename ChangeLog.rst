@@ -1,3 +1,12 @@
+2014.9.20 2014-09-20
+====================
+----
+
+* Fix #9: Django package name typo.
+* Feature: Add `AUTHORS.rst`` file.
+* Feature: Reorganized ``requirements``.
+
+
 1.1 2014-01-19
 ===============
 ----
