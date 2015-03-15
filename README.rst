@@ -22,8 +22,8 @@ languages:
 
 * ``textile`` -- implements `Textile`_ -- requires `PyTextile`_
 * ``markdown`` -- implements `Markdown`_ -- requires `Python-markdown`_
-* ``restructuredtext`` -- implements `reST (reStructured Text)`_
-  -- requires `doc-utils`_
+* ``reStructuredText`` -- implements `reST (reStructuredText)`_
+  -- requires `docutils`_
 
 In each case, the filter expects formatted markup as a string and
 returns a string representing the marked-up text. For example, the
@@ -83,29 +83,29 @@ To activate these filters, add ``'django_markwhat'`` to your
 
 .. _Textile: http://en.wikipedia.org/wiki/Textile_%28markup_language%29
 .. _Markdown: http://en.wikipedia.org/wiki/Markdown
-.. _reST (reStructured Text): http://en.wikipedia.org/wiki/ReStructuredText
+.. _reST (reStructured Text): http://en.wikipedia.org/wiki/reStructuredText
 .. _PyTextile: http://loopcore.com/python-textile/
 .. _Python-markdown: http://pypi.python.org/pypi/Markdown
-.. _doc-utils: http://docutils.sf.net/
+.. _docutils: http://docutils.sf.net/
 
-reStructured Text
------------------
+reStructuredText
+----------------
 
-When using the ``restructuredtext`` markup filter you can define a
+When using the ``reStructuredText`` markup filter you can define a
 `RESTRUCTUREDTEXT_FILTER_SETTINGS` in your django settings to
-override the default writer settings. See the `restructuredtext writer
+override the default writer settings. See the `reStructuredText writer
 settings`_ for details on what these settings are.
 
 .. warning::
 
-   reStructured Text has features that allow raw HTML to be included, and that
+   reStructuredText has features that allow raw HTML to be included, and that
    allow arbitrary files to be included. These can lead to XSS vulnerabilities
    and leaking of private information. It is your responsibility to check the
    features of this library and configure appropriately to avoid this. See the
    `Deploying Docutils Securely
    <http://docutils.sourceforge.net/docs/howto/security.html>`_ documentation.
 
-.. _restructuredtext writer settings: http://docutils.sourceforge.net/docs/user/config.html#html4css1-writer
+.. _reStructuredText writer settings: http://docutils.sourceforge.net/docs/user/config.html#html4css1-writer
 
 Markdown
 --------
