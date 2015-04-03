@@ -1,7 +1,7 @@
 """
 Running tests for django without using django-admin.py
 Or using manage.py.
-Bassically runnig just by executing this file.
+Basically run just by executing this file.
 
 Thanks to:
     - http://stackoverflow.com/q/3841725/636136
