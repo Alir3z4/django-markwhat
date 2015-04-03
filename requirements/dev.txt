@@ -1,6 +1,7 @@
 -r ../requirements.txt
 
-Markdown==2.5
+Markdown==2.6.1
+CommonMark==0.5.4
 textile==2.1.8
 docutils==0.12
 

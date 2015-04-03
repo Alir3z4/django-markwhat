@@ -74,6 +74,29 @@ def markdown(value, args=''):
 
 
 @register.filter(is_safe=True)
+def commonmark(value):
+    """
+    Runs CommonMark over a given value.
+
+    Syntax::
+
+        {{ value|commonmark }}
+
+    :type value: str
+
+    :rtype: str
+    """
+    import CommonMark
+
+    parser = CommonMark.DocParser()
+    renderer = CommonMark.HTMLRenderer()
+    ast = parser.parse(value)
+    return mark_safe(
+        force_text(renderer.render(ast))
+    )
+
+
+@register.filter(is_safe=True)
 def restructuredtext(value):
     """
     :type value: str

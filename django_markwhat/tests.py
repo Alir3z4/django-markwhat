@@ -1,8 +1,8 @@
 # Quick tests for the markup templatetags (django_markwhat)
 import re
+import unittest
 
 from django.template import Template, Context
-from django.utils import unittest
 from django.utils.html import escape
 
 try:
@@ -16,6 +16,11 @@ try:
     markdown_version = getattr(markdown, "version_info", 0)
 except ImportError:
     markdown = None
+
+try:
+    import CommonMark
+except ImportError:
+    CommonMark = None
 
 try:
     import docutils
@@ -89,6 +94,14 @@ Paragraph 2 with a link_
         rendered = t.render(Context(
             {'markdown_content': self.markdown_content})).strip()
         self.assertEqual(rendered, self.markdown_content)
+
+    @unittest.skipUnless(CommonMark, 'commonmark not installed')
+    def test_commonmark(self):
+        t = Template("{% load markup %}{{ markdown_content|commonmark }}")
+        rendered = t.render(
+            Context({'markdown_content': self.markdown_content})).strip()
+        pattern = re.compile("""<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>""")
+        self.assertTrue(pattern.match(rendered))
 
     @unittest.skipUnless(docutils, 'docutils not installed')
     def test_docutils(self):

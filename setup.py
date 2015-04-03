@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='django-markwhat',
-    version=".".join(map(str, __import__('django_markwhat').__version__)),
+    version='2014.9.20',
     packages=['django_markwhat', 'django_markwhat.templatetags'],
     url='http://pypi.python.org/pypi/django-markwhat',
     license=open('LICENSE').read(),
