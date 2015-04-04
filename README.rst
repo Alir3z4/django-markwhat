@@ -22,6 +22,7 @@ languages:
 
 * ``textile`` -- implements `Textile`_ -- requires `PyTextile`_
 * ``markdown`` -- implements `Markdown`_ -- requires `Python-markdown`_
+* ``commonmark`` -- implements `CommonMark`_ -- requires `CommonMark-py`_
 * ``reStructuredText`` -- implements `reST (reStructuredText)`_
   -- requires `docutils`_
 
@@ -83,6 +84,8 @@ To activate these filters, add ``'django_markwhat'`` to your
 
 .. _Textile: http://en.wikipedia.org/wiki/Textile_%28markup_language%29
 .. _Markdown: http://en.wikipedia.org/wiki/Markdown
+.. _CommonMark: http://commonmark.org
+.. _CommonMark-py: https://pypi.python.org/pypi/CommonMark
 .. _reST (reStructured Text): http://en.wikipedia.org/wiki/reStructuredText
 .. _PyTextile: http://loopcore.com/python-textile/
 .. _Python-markdown: http://pypi.python.org/pypi/Markdown
@@ -115,7 +118,7 @@ The Python Markdown library supports options named "safe_mode" and
 options in tandem, the markdown filter supports the "safe" argument.
 ::
     
-    { markdown_content_var|markdown:"safe" }}
+    {{ markdown_content_var|markdown:"safe" }}
 
 .. warning::
 
