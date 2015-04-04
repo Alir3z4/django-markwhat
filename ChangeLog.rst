@@ -2,6 +2,9 @@
 ====================
 ----
 
+* Feature #11: Correct capitalization / spacing for reStructuredText and 
+docutils in ``README.rst``.
+* Feature #12: PEP440 compliance with version number.
 * Feature #14: Add ``commonmark`` filter.
 * Feature #17: Add ``commonmark`` filter to ``README.rst``.
 * Fix #15: Fix typos in run_tests.py
