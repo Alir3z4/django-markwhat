@@ -7,7 +7,7 @@
 * Feature #14: Add ``commonmark`` filter.
 * Feature #17: Add ``commonmark`` filter to ``README.rst``.
 * Fix #15: Fix typos in run_tests.py
-* New awesome contibutors/authors joined the project.
+* New awesome contributors/authors joined the project.
 
 
 2014.9.20 2014-09-20
