@@ -90,7 +90,7 @@ def commonmark(value):
 
     parser = CommonMark.DocParser()
     renderer = CommonMark.HTMLRenderer()
-    ast = parser.parse(value)
+    ast = parser.parse(force_text(value))
     return mark_safe(
         force_text(renderer.render(ast))
     )

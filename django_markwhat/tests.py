@@ -103,6 +103,18 @@ Paragraph 2 with a link_
         pattern = re.compile("""<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>""")
         self.assertTrue(pattern.match(rendered))
 
+    @unittest.skipUnless(CommonMark, 'commonmark not installed')
+    def test_commonmark_empty_str(self):
+        t = Template("{% load markup %}{{ markdown_content|commonmark }}")
+        rendered = t.render(Context({'markdown_content': ''})).strip()
+        self.assertEqual(rendered, '')
+
+    @unittest.skipUnless(CommonMark, 'commonmark not installed')
+    def test_commonmark_none(self):
+        t = Template("{% load markup %}{{ markdown_content|commonmark }}")
+        rendered = t.render(Context({'markdown_content': None})).strip()
+        self.assertEqual(rendered, '<p>None</p>')
+
     @unittest.skipUnless(docutils, 'docutils not installed')
     def test_docutils(self):
         t = Template("{% load markup %}{{ rest_content|restructuredtext }}")
