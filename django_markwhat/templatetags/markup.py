@@ -10,6 +10,8 @@ markup syntaxes to HTML; currently there is support for:
       http://www.freewisdom.org/projects/python-markdown
 
     * reStructuredText, which requires docutils from http://docutils.sf.net/
+
+    * CommonMark, which requires CommonMark http://commonmark.org/
 """
 
 from django import template
