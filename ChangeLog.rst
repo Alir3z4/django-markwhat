@@ -1,3 +1,15 @@
+1.4 2015-04-26
+==============
+----
+
+* Feature #18: Fix typo in ChangeLog.
+* Feature #19: Force ``commonmark`` input to a string to prevent exception.
+* Feature #20: Update gitignore to cover more Python stuff.
+* Fix #21: Fix latest version of the package on PyPi.
+* Update requirements/dev.txt to the latest.
+
+
+
 1.3 2015-04-04
 ====================
 ----
