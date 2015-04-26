@@ -20,6 +20,7 @@ setup(
         'rst',
         'reStructuredText',
         'docutils',
+        'commonmark',
         'web'
     ],
     platforms='OS Independent',
