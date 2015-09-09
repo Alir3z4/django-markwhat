@@ -48,6 +48,16 @@ Paragraph 2 with "quotes" and @code@"""
     </video>
 ```
 """
+
+    markdown_content_with_iframe_code = """Paragraph 1
+
+## An h2
+
+```
+    <iframe src="http://example.com"></iframe>
+```
+"""
+
     rest_content = """Paragraph 1
 
 Paragraph 2 with a link_
@@ -86,6 +96,19 @@ Paragraph 2 with a link_
         pattern = re.compile(
             '<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
             '\s*<p><code>\s*&lt;video width="320"'
+        )
+        self.assertTrue(pattern.match(rendered))
+
+    @unittest.skipUnless(markdown, 'markdown not installed')
+    def test_markdown_html_iframe_code(self):
+        t = Template("{% load markup %}{{ markdown_content|markdown }}")
+        rendered = t.render(Context({
+            'markdown_content': self.markdown_content_with_iframe_code
+        })).strip()
+        pattern = re.compile(
+            '<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
+            '\s*<p><code>\s*&lt;iframe src="http://example.com"&gt;' +
+            '&lt;/iframe&gt;'
         )
         self.assertTrue(pattern.match(rendered))
 
@@ -135,6 +158,20 @@ Paragraph 2 with a link_
         pattern = re.compile(
             '<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
             '\s*<pre><code>\s*&lt;video width=&quot;320&quot'
+        )
+        self.assertTrue(pattern.match(rendered))
+
+    @unittest.skipUnless(CommonMark, 'commonmark not installed')
+    def test_commonmark_html_iframe_code(self):
+        t = Template("{% load markup %}{{ markdown_content|commonmark }}")
+        rendered = t.render(Context({
+            'markdown_content': self.markdown_content_with_iframe_code
+        })).strip()
+        pattern = re.compile(
+            '<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
+            '\s*<pre><code>\s*&lt;iframe ' +
+            'src=&quot;http://example.com&quot;&gt;' +
+            '&lt;/iframe&gt;'
         )
         self.assertTrue(pattern.match(rendered))
 
