@@ -4,4 +4,4 @@ Markdown==2.6.2
 CommonMark==0.5.4
 textile==2.2.2
 docutils==0.12
-
+flake8==2.4.1

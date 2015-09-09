@@ -6,4 +6,6 @@ python:
     - pypy
 install:
     - pip install -r requirements/dev.txt
-script: python run_tests.py
+script:
+    - flake8 *.py django_markwhat/*.py
+    - python run_tests.py
