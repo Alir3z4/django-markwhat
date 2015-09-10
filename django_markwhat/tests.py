@@ -83,7 +83,9 @@ Paragraph 2 with a link_
     @unittest.skipUnless(markdown, 'markdown not installed')
     def test_markdown(self):
         t = Template("{% load markup %}{{ markdown_content|markdown }}")
-        rendered = t.render(Context({'markdown_content': self.markdown_content})).strip()
+        rendered = t.render(Context({
+            'markdown_content': self.markdown_content
+        })).strip()
         pattern = re.compile("""<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>""")
         self.assertTrue(pattern.match(rendered))
 
@@ -190,16 +192,25 @@ Paragraph 2 with a link_
     @unittest.skipUnless(docutils, 'docutils not installed')
     def test_docutils(self):
         t = Template("{% load markup %}{{ rest_content|restructuredtext }}")
-        rendered = t.render(Context({'rest_content': self.rest_content})).strip()
+        rendered = t.render(Context({
+            'rest_content': self.rest_content
+        })).strip()
         # Different versions of docutils return slightly different HTML
         try:
             # Docutils v0.4 and earlier
-            self.assertEqual(rendered, """<p>Paragraph 1</p>
-<p>Paragraph 2 with a <a class="reference" href="http://www.example.com/">link</a></p>""")
-        except AssertionError as exc:
+            self.assertEqual(
+                rendered,
+                '<p>Paragraph 1</p>\n' +
+                '<p>Paragraph 2 with a <a class="reference" ' +
+                'href="http://www.example.com/">link</a></p>')
+        except AssertionError:
             # Docutils from SVN (which will become 0.5)
-            self.assertEqual(rendered, """<p>Paragraph 1</p>
-<p>Paragraph 2 with a <a class="reference external" href="http://www.example.com/">link</a></p>""")
+            self.assertEqual(
+                rendered,
+                '<p>Paragraph 1</p>\n' +
+                '<p>Paragraph 2 with a ' +
+                '<a class="reference external" ' +
+                'href="http://www.example.com/">link</a></p>')
 
     @unittest.skipIf(docutils, 'docutils is installed')
     def test_no_docutils(self):
@@ -207,4 +218,3 @@ Paragraph 2 with a link_
         rendered = t.render(
             Context({'rest_content': self.rest_content})).strip()
         self.assertEqual(rendered, self.rest_content)
-

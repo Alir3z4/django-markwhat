@@ -3,6 +3,7 @@
 ----
 
 * Added tests for rendering code blocks.
+* The code is now automatically being checked by flake8.
 
 
 
