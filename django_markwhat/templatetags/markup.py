@@ -90,8 +90,8 @@ def commonmark(value):
     """
     import CommonMark
 
-    parser = CommonMark.DocParser()
-    renderer = CommonMark.HTMLRenderer()
+    parser = CommonMark.Parser()
+    renderer = CommonMark.HtmlRenderer()
     ast = parser.parse(force_text(value))
     return mark_safe(
         force_text(renderer.render(ast))
