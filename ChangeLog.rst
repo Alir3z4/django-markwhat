@@ -4,7 +4,8 @@
 
 * Added tests for rendering code blocks.
 * The code is now automatically being checked by flake8.
-
+* Added compatibility with CommonMark-py 0.6.x.
+* Dropped support for python 3.3.
 
 
 1.4 2015-04-26
