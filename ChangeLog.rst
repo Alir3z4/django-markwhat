@@ -1,5 +1,5 @@
-1.5
-==============
+1.5 2016-01-08
+===============
 ----
 
 * Added tests for rendering code blocks.
