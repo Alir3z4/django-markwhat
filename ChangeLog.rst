@@ -1,5 +1,12 @@
+1.5.1 2016-12-07
+================
+----
+
+* Feature #32: Upgrade CommonMark to latest version (0.7.2).
+
+
 1.5
-==============
+===
 ----
 
 * Added tests for rendering code blocks.
@@ -21,7 +28,7 @@
 
 
 1.3 2015-04-04
-====================
+==============
 ----
 
 * Feature #11: Correct capitalization / spacing for reStructuredText and docutils in ``README.rst``.
@@ -47,7 +54,7 @@
 
 
 1.1 2014-01-19
-===============
+==============
 ----
 
 * Added ChangeLog.rst
