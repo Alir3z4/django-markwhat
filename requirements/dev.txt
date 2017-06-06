@@ -2,6 +2,6 @@
 
 Markdown==2.6.8
 CommonMark==0.7.3
-textile==2.2.2
+textile==2.3.12
 docutils==0.12
 flake8==2.5.1
