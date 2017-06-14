@@ -9,32 +9,51 @@ Thanks to:
     - http://stackoverflow.com/a/12260597/636136
 
 """
-import os
 import django
 from django.conf import settings
 from django.core.management import call_command
 
-DJANGO_VERSION = float('.'.join([str(i) for i in django.VERSION[0:2]]))
 
-DIR_NAME = os.path.dirname(__file__)
-settings.configure(
-    DEBUG=True,
-    DATABASES={
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-        }
-    },
-    INSTALLED_APPS=(
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.admin',
-        'django_markwhat'
-    ),
-    MIDDLEWARE_CLASSES=[],
-)
+def main():
+    settings.configure(
+        DEBUG=True,
+        DATABASES={
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+            }
+        },
+        TEMPLATES=[
+            {
+                'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                'DIRS': [],
+                'APP_DIRS': True,
+                'OPTIONS': {
+                    'context_processors': [
+                        'django.contrib.auth.context_processors.auth',
+                        'django.template.context_processors.debug',
+                        'django.template.context_processors.i18n',
+                        'django.template.context_processors.media',
+                        'django.template.context_processors.static',
+                        'django.template.context_processors.tz',
+                        'django.contrib.messages.context_processors.messages',
+                    ],
+                },
+            }
+        ],
+        INSTALLED_APPS=(
+            'django.contrib.auth',
+            'django.contrib.contenttypes',
+            'django.contrib.sessions',
+            'django.contrib.admin',
+            'django_markwhat'
+        ),
+        MIDDLEWARE_CLASSES=[],
+    )
 
-if DJANGO_VERSION >= 1.7:
     django.setup()
 
-call_command('test')
+    call_command('test')
+
+
+if __name__ == '__main__':
+    main()
