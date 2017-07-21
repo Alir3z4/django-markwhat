@@ -32,7 +32,7 @@ def textile(value):
     import textile
 
     return mark_safe(force_text(
-        textile.textile(smart_str(value), encoding='utf-8', output='utf-8'))
+        textile.textile(smart_str(value)))
     )
 
 
