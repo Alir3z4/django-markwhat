@@ -1,5 +1,3 @@
--r ../requirements.txt
-
 Markdown==2.6.9
 CommonMark==0.7.4
 textile==3.0.0
