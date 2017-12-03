@@ -2,9 +2,8 @@
 Django MarkWhat
 =====================
 
-.. image:: https://travis-ci.org/Alir3z4/django-markwhat.png
-   :alt: travis-cli tests status for django-markwhat
-   :target: https://travis-ci.org/Alir3z4/django-markwhat
+.. image:: https://travis-ci.org/Alir3z4/django-markwhat.svg?branch=master
+    :target: https://travis-ci.org/Alir3z4/django-markwhat
 
 
 .. contents:: Table of contents
