@@ -18,6 +18,7 @@ setup(
     description="A collection of template filters that implement " +
             "common markup languages.",
     long_description=long_description,
+    long_description_content_type='text/x-rst',
     keywords=[
         'django',
         'markdown',
