@@ -11,7 +11,7 @@ markup syntaxes to HTML; currently there is support for:
 
     * reStructuredText, which requires docutils from http://docutils.sf.net/
 
-    * CommonMark, which requires CommonMark http://commonmark.org/
+    * CommonMark, which requires commonmark http://commonmark.org/
 """
 
 from django import template
@@ -78,7 +78,7 @@ def markdown(value, args=''):
 @register.filter(is_safe=True)
 def commonmark(value):
     """
-    Runs CommonMark over a given value.
+    Runs commonmark over a given value.
 
     Syntax::
 
@@ -88,10 +88,10 @@ def commonmark(value):
 
     :rtype: str
     """
-    import CommonMark
+    import commonmark
 
-    parser = CommonMark.Parser()
-    renderer = CommonMark.HtmlRenderer()
+    parser = commonmark.Parser()
+    renderer = commonmark.HtmlRenderer()
     ast = parser.parse(force_text(value))
     return mark_safe(
         force_text(renderer.render(ast))

@@ -18,9 +18,9 @@ except ImportError:
     markdown = None
 
 try:
-    import CommonMark
+    import commonmark
 except ImportError:
-    CommonMark = None
+    commonmark = None
 
 try:
     import docutils
@@ -143,7 +143,7 @@ Paragraph 2 with a link_
             {'markdown_content': self.markdown_content})).strip()
         self.assertEqual(rendered, self.markdown_content)
 
-    @unittest.skipUnless(CommonMark, 'commonmark not installed')
+    @unittest.skipUnless(commonmark, 'commonmark not installed')
     def test_commonmark(self):
         t = Template("{% load markup %}{{ markdown_content|commonmark }}")
         rendered = t.render(
@@ -151,7 +151,7 @@ Paragraph 2 with a link_
         pattern = re.compile("""<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>""")
         self.assertTrue(pattern.match(rendered))
 
-    @unittest.skipUnless(CommonMark, 'commonmark not installed')
+    @unittest.skipUnless(commonmark, 'commonmark not installed')
     def test_commonmark_html_code(self):
         t = Template("{% load markup %}{{ markdown_content|commonmark }}")
         rendered = t.render(Context({
@@ -163,7 +163,7 @@ Paragraph 2 with a link_
         )
         self.assertTrue(pattern.match(rendered))
 
-    @unittest.skipUnless(CommonMark, 'commonmark not installed')
+    @unittest.skipUnless(commonmark, 'commonmark not installed')
     def test_commonmark_html_iframe_code(self):
         t = Template("{% load markup %}{{ markdown_content|commonmark }}")
         rendered = t.render(Context({
@@ -177,13 +177,13 @@ Paragraph 2 with a link_
         )
         self.assertTrue(pattern.match(rendered))
 
-    @unittest.skipUnless(CommonMark, 'commonmark not installed')
+    @unittest.skipUnless(commonmark, 'commonmark not installed')
     def test_commonmark_empty_str(self):
         t = Template("{% load markup %}{{ markdown_content|commonmark }}")
         rendered = t.render(Context({'markdown_content': ''})).strip()
         self.assertEqual(rendered, '')
 
-    @unittest.skipUnless(CommonMark, 'commonmark not installed')
+    @unittest.skipUnless(commonmark, 'commonmark not installed')
     def test_commonmark_none(self):
         t = Template("{% load markup %}{{ markdown_content|commonmark }}")
         rendered = t.render(Context({'markdown_content': None})).strip()
