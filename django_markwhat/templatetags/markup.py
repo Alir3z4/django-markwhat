@@ -69,7 +69,7 @@ def markdown(value, args=''):
 
     return mark_safe(markdown.markdown(
         force_text(value),
-        extensions,
+        extensions=extensions,
         safe_mode=safe_mode,
         enable_attributes=(not safe_mode)
     ))
