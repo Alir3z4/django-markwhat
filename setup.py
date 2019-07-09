@@ -10,7 +10,7 @@ setup(
     name='django-markwhat',
     version=".".join(map(str, __import__('django_markwhat').__version__)),
     packages=['django_markwhat', 'django_markwhat.templatetags'],
-    url='http://pypi.python.org/pypi/django-markwhat',
+    url='https://pypi.org/project/django-markwhat/',
     license="BSD-3-Clause",
     author='Alireza Savand',
     author_email='alireza.savand@gmail.com',
