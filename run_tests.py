@@ -16,6 +16,11 @@ from django.core.management import call_command
 
 def main():
     settings.configure(
+        MIDDLEWARE=(
+            'django.contrib.sessions.middleware.SessionMiddleware',
+            'django.contrib.auth.middleware.AuthenticationMiddleware',
+            'django.contrib.messages.middleware.MessageMiddleware',
+        ),
         DEBUG=True,
         DATABASES={
             'default': {
@@ -45,9 +50,9 @@ def main():
             'django.contrib.contenttypes',
             'django.contrib.sessions',
             'django.contrib.admin',
+            'django.contrib.messages',
             'django_markwhat'
         ),
-        MIDDLEWARE_CLASSES=[],
     )
 
     django.setup()
