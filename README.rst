@@ -37,7 +37,7 @@ Supported Python versions
 ``django-crequest`` currently can be run on multiple python versions:
 
 * Python 2 (2.7)
-* Python 3 (3.4, 3.5, 3.6)
+* Python 3 (3.5, 3.6)
 * PyPy
 
 
