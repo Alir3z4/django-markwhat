@@ -1,3 +1,10 @@
+1.6.2 2019-08-30
+================
+----
+
+* Use keyword argument for markdown(), fixing compatibility with
+  Markdown 3.x
+
 1.6.1 2018-09-06
 ================
 ----

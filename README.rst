@@ -22,7 +22,7 @@ languages:
 * ``textile`` -- implements `Textile`_ -- requires `PyTextile`_
 * ``markdown`` -- implements `Markdown`_ -- requires `Python-markdown`_
 * ``commonmark`` -- implements `CommonMark`_ -- requires `CommonMark-py`_
-* ``reStructuredText`` -- implements `reST (reStructuredText)`_
+* ``reStructuredText`` -- implements `reStructuredText`_
   -- requires `docutils`_
 
 In each case, the filter expects formatted markup as a string and
