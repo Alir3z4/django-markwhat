@@ -86,7 +86,7 @@ Paragraph 2 with a link_
         rendered = t.render(Context({
             'markdown_content': self.markdown_content
         })).strip()
-        pattern = re.compile("""<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>""")
+        pattern = re.compile(r"<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>")
         self.assertTrue(pattern.match(rendered))
 
     @unittest.skipUnless(markdown, 'markdown not installed')
@@ -96,8 +96,8 @@ Paragraph 2 with a link_
             'markdown_content': self.markdown_content_with_html_code
         })).strip()
         pattern = re.compile(
-            '<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
-            '\s*<p><code>\s*&lt;video width="320"'
+            r'<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
+            r'\s*<p><code>\s*&lt;video width="320"'
         )
         self.assertTrue(pattern.match(rendered))
 
@@ -108,9 +108,9 @@ Paragraph 2 with a link_
             'markdown_content': self.markdown_content_with_iframe_code
         })).strip()
         pattern = re.compile(
-            '<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
-            '\s*<p><code>\s*&lt;iframe src="http://example.com"&gt;' +
-            '&lt;/iframe&gt;'
+            r'<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
+            r'\s*<p><code>\s*&lt;iframe src="http://example.com"&gt;' +
+            r'&lt;/iframe&gt;'
         )
         self.assertTrue(pattern.match(rendered))
 
@@ -148,7 +148,7 @@ Paragraph 2 with a link_
         t = Template("{% load markup %}{{ markdown_content|commonmark }}")
         rendered = t.render(
             Context({'markdown_content': self.markdown_content})).strip()
-        pattern = re.compile("""<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>""")
+        pattern = re.compile(r"<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>")
         self.assertTrue(pattern.match(rendered))
 
     @unittest.skipUnless(commonmark, 'commonmark not installed')
@@ -158,8 +158,8 @@ Paragraph 2 with a link_
             'markdown_content': self.markdown_content_with_html_code
         })).strip()
         pattern = re.compile(
-            '<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
-            '\s*<pre><code>\s*&lt;video width=&quot;320&quot'
+            r'<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
+            r'\s*<pre><code>\s*&lt;video width=&quot;320&quot'
         )
         self.assertTrue(pattern.match(rendered))
 
@@ -170,10 +170,10 @@ Paragraph 2 with a link_
             'markdown_content': self.markdown_content_with_iframe_code
         })).strip()
         pattern = re.compile(
-            '<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
-            '\s*<pre><code>\s*&lt;iframe ' +
-            'src=&quot;http://example.com&quot;&gt;' +
-            '&lt;/iframe&gt;'
+            r'<p>Paragraph 1\s*</p>\s*<h2>\s*An h2</h2>' +
+            r'\s*<pre><code>\s*&lt;iframe ' +
+            r'src=&quot;http://example.com&quot;&gt;' +
+            r'&lt;/iframe&gt;'
         )
         self.assertTrue(pattern.match(rendered))
 
