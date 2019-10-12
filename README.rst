@@ -37,7 +37,7 @@ Supported Python versions
 ``django-crequest`` currently can be run on multiple python versions:
 
 * Python 2 (2.7)
-* Python 3 (3.5, 3.6)
+* Python 3 (3.5, 3.6, 3.7)
 * PyPy
 
 
@@ -46,9 +46,9 @@ Installation
 ------------
 ``django-markwhat`` is available on pypi:
 
-http://pypi.python.org/pypi/django-markwhat
+https://pypi.org/project/django-markwhat/
 
-So easily install it by ``pip``:
+Install it by ``pip``:
 ::
     
     pip install django-markwhat
