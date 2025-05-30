@@ -1,5 +1,6 @@
 """
 Set of "markup" template filters for Django.
+
 These filters transform plain text
 markup syntaxes to HTML; currently there is support for:
 
@@ -16,29 +17,31 @@ markup syntaxes to HTML; currently there is support for:
 
 from django import template
 from django.conf import settings
-from django.utils.encoding import force_str
+from django.utils.encoding import force_str, smart_str
 from django.utils.safestring import mark_safe
 
 register = template.Library()
 
 
 @register.filter(is_safe=True)
-def textile(value):
+def textile(value: str) -> str:
     """
-    :type value: str
+    Runs textile over a given value.
 
-    :rtype: str
+    Syntax::
+
+        {{ value|textile }}
     """
-    import textile
+    import textile  # type: ignore[import-untyped]
 
-    return mark_safe(force_str(
-        textile.textile(smart_str(value)))
-    )
+    return mark_safe(force_str(textile.textile(smart_str(value))))
 
 
 @register.filter(is_safe=True)
-def markdown(value, args=''):
+def markdown(value: str, args: str = "") -> str:
     """
+    Markdown Template tag.
+
     Runs Markdown over a given value, optionally using various
     extensions python-markdown supports.
 
@@ -52,68 +55,45 @@ def markdown(value, args=''):
 
     If the version of Markdown in use does not support extensions,
     they will be silently ignored.
-
-    :type value: str
-    :type args: str
-
-    :rtype: str
     """
     import markdown
 
-    extensions = [e for e in args.split(',') if e]
+    extensions = [e for e in args.split(",") if e]
     if len(extensions) > 0 and extensions[0] == "safe":
         extensions = extensions[1:]
-        safe_mode = True
-    else:
-        safe_mode = False
 
-    return mark_safe(markdown.markdown(
-        force_str(value),
-        extensions=extensions,
-        safe_mode=safe_mode,
-        enable_attributes=(not safe_mode)
-    ))
+    return mark_safe(markdown.markdown(force_str(value), extensions=extensions))
 
 
 @register.filter(is_safe=True)
-def commonmark(value):
+def commonmark(value: str) -> str:
     """
     Runs commonmark over a given value.
 
     Syntax::
 
         {{ value|commonmark }}
-
-    :type value: str
-
-    :rtype: str
     """
     import commonmark
 
     parser = commonmark.Parser()
     renderer = commonmark.HtmlRenderer()
     ast = parser.parse(force_str(value))
-    return mark_safe(
-        force_str(renderer.render(ast))
-    )
+    return mark_safe(force_str(renderer.render(ast)))
 
 
 @register.filter(is_safe=True)
-def restructuredtext(value):
+def restructuredtext(value: str) -> str:
     """
-    :type value: str
-    :rtype: str
+    Runs restructured text over a given value.
+
+    Syntax::
+
+        {{ value|restructuredtext }}
     """
+    """"""
     from docutils.core import publish_parts
 
-    docutils_settings = getattr(
-        settings,
-        "RESTRUCTUREDTEXT_FILTER_SETTINGS",
-        {}
-    )
-    parts = publish_parts(
-        source=smart_str(value),
-        writer_name="html4css1",
-        settings_overrides=docutils_settings
-    )
+    docutils_settings = getattr(settings, "RESTRUCTUREDTEXT_FILTER_SETTINGS", {})
+    parts = publish_parts(source=smart_str(value), writer_name="html4css1", settings_overrides=docutils_settings)
     return mark_safe(force_str(parts["fragment"]))
