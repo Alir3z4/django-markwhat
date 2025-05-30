@@ -1,3 +1,11 @@
+2025.5.31
+=========
+----
+
+* Upgrade all the dependecies to latest version.
+* Modernize the build and development tooling process.
+
+
 1.6.2 2019-08-30
 ================
 ----

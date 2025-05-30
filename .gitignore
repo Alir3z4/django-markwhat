@@ -1,6 +1,7 @@
 # IDE specific
 .idea/
 .ropeproject/
+.vscode/
 # file
 manage.py
 dump.json
@@ -37,6 +38,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+django_markwhat/_version.py
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -70,6 +72,3 @@ docs/_build/
 
 # PyBuilder
 target/
-
-# virtualenv
-ve/
