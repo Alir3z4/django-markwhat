@@ -16,7 +16,7 @@ markup syntaxes to HTML; currently there is support for:
 
 from django import template
 from django.conf import settings
-from django.utils.encoding import smart_str, force_text
+from django.utils.encoding import force_str
 from django.utils.safestring import mark_safe
 
 register = template.Library()
@@ -31,7 +31,7 @@ def textile(value):
     """
     import textile
 
-    return mark_safe(force_text(
+    return mark_safe(force_str(
         textile.textile(smart_str(value)))
     )
 
@@ -68,7 +68,7 @@ def markdown(value, args=''):
         safe_mode = False
 
     return mark_safe(markdown.markdown(
-        force_text(value),
+        force_str(value),
         extensions=extensions,
         safe_mode=safe_mode,
         enable_attributes=(not safe_mode)
@@ -92,9 +92,9 @@ def commonmark(value):
 
     parser = commonmark.Parser()
     renderer = commonmark.HtmlRenderer()
-    ast = parser.parse(force_text(value))
+    ast = parser.parse(force_str(value))
     return mark_safe(
-        force_text(renderer.render(ast))
+        force_str(renderer.render(ast))
     )
 
 
@@ -116,4 +116,4 @@ def restructuredtext(value):
         writer_name="html4css1",
         settings_overrides=docutils_settings
     )
-    return mark_safe(force_text(parts["fragment"]))
+    return mark_safe(force_str(parts["fragment"]))
