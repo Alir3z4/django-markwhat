@@ -1,4 +1,4 @@
-Markdown==3.4.3
+Markdown==3.8.2
 commonmark==0.9.0
 textile==3.0.4
 docutils==0.15.2
